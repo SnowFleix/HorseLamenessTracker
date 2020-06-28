@@ -15,7 +15,12 @@ class HomeWindow : public QMainWindow
 public:
     HomeWindow(QWidget *parent = nullptr);
     ~HomeWindow();
-
+private slots:
+    void btnStartNew_Clicked();
+    void btnCalibrate_Clicked();
+    void btnLoadVideo_Clicked();
+    void btnLoadTest_Clicked();
+    void btnCompareTests_Clicked();
 private:
     Ui::HomeWindow *ui;
 };

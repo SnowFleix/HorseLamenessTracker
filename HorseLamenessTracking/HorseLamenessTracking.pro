@@ -1,4 +1,4 @@
-QT       += core gui, charts
+QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,13 +20,16 @@ SOURCES += \
     main.cpp \
     homewindow.cpp \
     resultspage.cpp \
-    trackingpage.cpp
+    trackingpage.cpp \
+    utilfunctions.cpp
 
 HEADERS += \
     configurationpage.h \
+    definitions.h \
     homewindow.h \
     resultspage.h \
-    trackingpage.h
+    trackingpage.h \
+    utilfunctions.h
 
 FORMS += \
     configurationpage.ui \
@@ -39,12 +42,12 @@ TRANSLATIONS += \
 
 INCLUDEPATH += J:\OpenCV-QT\OpenCV-2.4.9\include
 
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_core320.dll
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_highgui320.dll
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgcodecs320.dll
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgproc320.dll
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_features2d320.dll
-LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_calib3d320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_core320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_highgui320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgcodecs320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgproc320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_features2d320.dll
+#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_calib3d320.dll
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
