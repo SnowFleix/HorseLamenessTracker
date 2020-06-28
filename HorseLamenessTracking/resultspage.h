@@ -2,6 +2,7 @@
 #define RESULTSPAGE_H
 
 #include <QWidget>
+#include <QtCharts>
 
 namespace Ui {
 class ResultsPage;
