@@ -22,8 +22,7 @@ SOURCES += \
     marker.cpp \
     object.cpp \
     resultspage.cpp \
-    trackingpage.cpp \
-    utilfunctions.cpp
+    trackingpage.cpp
 
 HEADERS += \
     configurationpage.h \
@@ -44,7 +43,7 @@ FORMS += \
 TRANSLATIONS += \
     HorseLamenessTracking_en_GB.ts
 
-INCLUDEPATH += J:\OpenCV-QT\OpenCV-2.4.9\include
+INCLUDEPATH += J:\opencv-4.3.0\opencv\build\include
 
 #LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_core320.dll
 #LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_highgui320.dll
