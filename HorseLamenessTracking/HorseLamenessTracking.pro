@@ -19,6 +19,8 @@ SOURCES += \
     configurationpage.cpp \
     main.cpp \
     homewindow.cpp \
+    marker.cpp \
+    object.cpp \
     resultspage.cpp \
     trackingpage.cpp \
     utilfunctions.cpp
@@ -27,6 +29,8 @@ HEADERS += \
     configurationpage.h \
     definitions.h \
     homewindow.h \
+    marker.h \
+    object.h \
     resultspage.h \
     trackingpage.h \
     utilfunctions.h
