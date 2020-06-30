@@ -1,6 +1,5 @@
 #include "marker.h"
 
-Marker::Marker()
-{
+Marker::Marker() { }
 
-}
+Marker::~Marker(void) { }

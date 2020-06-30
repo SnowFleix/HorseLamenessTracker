@@ -1,14 +1,21 @@
 #ifndef UTILFUNCTIONS_H
 #define UTILFUNCTIONS_H
 
-#pragma region utility functions
+#include "object.h"
+#include "marker.h"
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+#include <vector>
+
 void resizeAnImage(cv::Mat& image, int height, int width) {
     cv::resize(image, image, cv::Size(height, width));
 }
 
-void hideConsole() {
+/*void hideConsole() {
     ShowWindow(GetConsoleWindow(), SW_MINIMIZE);
-}
+}*/
 
 // simple int to string function
 std::string intToString(int number) {
@@ -16,9 +23,7 @@ std::string intToString(int number) {
     ss << number;
     return ss.str();
 }
-#pragma endregion
 
-#pragma region Function used for Tracking
 // function to check if the marker is close enough to another for it to be in that graph
 bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
     if (abs(marker.x - object.x) > 20 || abs(marker.y - object.y) > 20) // I need to find a multiplyer that includes frame as if it loses the marker in its current state there is no way that it will be able to find it again after a couple of frames
@@ -159,11 +164,5 @@ void displayMarkersOnScreen(cv::Mat threshold, cv::Mat HSV, cv::Mat &cameraFeed)
         else putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
     }
 }
-#pragma endregion
-class UtilFunctions
-{
-public:
-    UtilFunctions();
-};
 
 #endif // UTILFUNCTIONS_H
