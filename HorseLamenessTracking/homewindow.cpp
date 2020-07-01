@@ -1,6 +1,7 @@
 #include "homewindow.h"
 #include "ui_homewindow.h"
 #include "trackingpage.h"
+#include "configurationpage.h"
 
 HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -24,17 +25,16 @@ void HomeWindow::btnStartNew_Clicked() {
     trackingPage.show();
 }
 void HomeWindow::btnCalibrate_Clicked() {
-
+    ConfigurationPage configPage;
+    configPage.show();
 }
-
 void HomeWindow::btnLoadVideo_Clicked() {
-
+    ConfigurationPage configPage(nullptr, true);
+    configPage.show();
 }
-
 void HomeWindow::btnLoadTest_Clicked() {
 
 }
-
 void HomeWindow::btnCompareTests_Clicked() {
 
 }

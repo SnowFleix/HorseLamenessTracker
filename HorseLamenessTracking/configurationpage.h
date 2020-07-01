@@ -12,7 +12,7 @@ class ConfigurationPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit ConfigurationPage(QWidget *parent = nullptr);
+    explicit ConfigurationPage(QWidget *parent = nullptr, bool isVideo = false);
     ~ConfigurationPage();
 
 private:
