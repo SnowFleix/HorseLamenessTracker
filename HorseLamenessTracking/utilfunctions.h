@@ -3,7 +3,8 @@
 
 #include "object.h"
 #include "marker.h"
-5
+#include "Definitions.h"
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
@@ -13,10 +14,6 @@ void resizeAnImage(cv::Mat& image, int height, int width) {
     cv::resize(image, image, cv::Size(height, width));
 }
 
-/*void hideConsole() {
-    ShowWindow(GetConsoleWindow(), SW_MINIMIZE);
-}*/
-
 // simple int to string function
 std::string intToString(int number) {
     std::stringstream ss;
@@ -25,6 +22,7 @@ std::string intToString(int number) {
 }
 
 // function to check if the marker is close enough to another for it to be in that graph
+// TOTO: add multiplyer for frame where
 bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
     if (abs(marker.x - object.x) > 20 || abs(marker.y - object.y) > 20) // I need to find a multiplyer that includes frame as if it loses the marker in its current state there is no way that it will be able to find it again after a couple of frames
         return false;
@@ -59,7 +57,7 @@ void morphOps(cv::Mat &thresh) {
     cv::dilate(thresh, thresh, dilateElement);
 }
 
-void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat threshold, cv::Mat HSV, cv::Mat &cameraFeed) {
+void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat threshold, cv::Mat &cameraFeed) {
     std::vector <Object> objects;
     cv::Mat temp;
     threshold.copyTo(temp);
@@ -68,13 +66,11 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
     std::vector<cv::Vec4i> hierarchy;
     //find contours of filtered image using openCV findContours function
     cv::findContours(temp, contours, hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
-    //use moments method to find our filtered object
-    double refArea = 0;
     bool objectFound = false;
     if (hierarchy.size() > 0) {
-        int numObjects = hierarchy.size();
+
         //if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
-        if (numObjects < MAX_NUM_OBJECTS) {
+        if (hierarchy.size() < MAX_NUM_OBJECTS) {
 
             for (int index = 0; index >= 0; index = hierarchy[index][0]) {
 
@@ -120,7 +116,7 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
     }
 }
 
-void displayMarkersOnScreen(cv::Mat threshold, cv::Mat HSV, cv::Mat &cameraFeed) {
+void displayMarkersOnScreen(cv::Mat threshold, cv::Mat &cameraFeed) {
     std::vector <Object> objects;
     cv::Mat temp;
     threshold.copyTo(temp);
