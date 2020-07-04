@@ -14,6 +14,8 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ui->btnLoadVideo, SIGNAL(released()), this, SLOT(btnLoadVideo_Clicked()));
     connect(ui->btnLoadTest, SIGNAL(released()), this, SLOT(btnLoadTest_Clicked()));
     connect(ui->btnCompare, SIGNAL(released()), this, SLOT(btnCompareTests_Clicked()));
+
+
 }
 
 HomeWindow::~HomeWindow() {

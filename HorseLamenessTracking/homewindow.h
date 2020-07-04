@@ -2,6 +2,7 @@
 #define HOMEWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog> // /used for allowing the user to select a file
 #include <opencv2/opencv.hpp>
 
 QT_BEGIN_NAMESPACE
@@ -23,5 +24,6 @@ private slots:
     void btnCompareTests_Clicked();
 private:
     Ui::HomeWindow *ui;
+    cv::VideoCapture _mainCamera, _secondCamera, _thirdCamera, _fourthCamera;
 };
 #endif // HOMEWINDOW_H
