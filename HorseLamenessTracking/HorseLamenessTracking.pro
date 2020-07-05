@@ -20,6 +20,7 @@ SOURCES += \
     main.cpp \
     homewindow.cpp \
     marker.cpp \
+    movingaverage.cpp \
     object.cpp \
     resultspage.cpp \
     trackingpage.cpp
@@ -29,6 +30,7 @@ HEADERS += \
     definitions.h \
     homewindow.h \
     marker.h \
+    movingaverage.h \
     object.h \
     resultspage.h \
     trackingpage.h \
