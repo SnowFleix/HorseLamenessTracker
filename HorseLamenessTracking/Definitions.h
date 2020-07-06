@@ -2,6 +2,8 @@
 #define DEFINITIONS_H
 
 #include <qimage.h>
+#include <list>
+#include <opencv2/opencv.hpp>
 
 // global variables used to change the HSV filers
 const int H_MIN = 70;
@@ -20,5 +22,8 @@ const int MAX_OBJECT_AREA = 150 * 150;
 
 // this default image is used when there is no camera connected to the PC
 const QImage defaultIamage = QImage("UI/CameraNotConnected.png");
+
+// quick hack to be able to share the different webcams on each UI
+static std::list<cv::VideoCapture> webCamList;
 
 #endif // DEFINITIONS_H
