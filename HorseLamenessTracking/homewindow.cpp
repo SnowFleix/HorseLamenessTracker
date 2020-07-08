@@ -1,7 +1,6 @@
 #include "homewindow.h"
 #include "ui_homewindow.h"
 
-
 HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HomeWindow)
@@ -36,4 +35,16 @@ void HomeWindow::btnLoadTest_Clicked() {
 }
 void HomeWindow::btnCompareTests_Clicked() {
 
+}
+
+void HomeWindow::updateFrames() {
+    cv::Mat frame;
+    webCamList[0] >> frame;
+    // need to add the frame to the opengl widgets
+    webCamList[1] >> frame;
+    // need to add the frame to the opengl widgets
+    webCamList[2] >> frame;
+    // need to add the frame to the opengl widgets
+    webCamList[3] >> frame;
+    // need to add the frame to the opengl widgets
 }

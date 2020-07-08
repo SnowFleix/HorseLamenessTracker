@@ -2,9 +2,11 @@
 #define HOMEWINDOW_H
 
 #include <QMainWindow>
+#include <QThread>
 #include <QFileDialog> // /used for allowing the user to select a file
 #include <opencv2/opencv.hpp>
 
+#include "Definitions.h"
 #include "trackingpage.h"
 #include "configurationpage.h"
 
@@ -15,7 +17,7 @@ QT_END_NAMESPACE
 class HomeWindow : public QMainWindow
 {
     Q_OBJECT
-
+    QThread _displayVideoThread;
 public:
     HomeWindow(QWidget *parent = nullptr);
     ~HomeWindow();
@@ -28,5 +30,6 @@ private slots:
 private:
     Ui::HomeWindow *ui;
     cv::VideoCapture _mainCamera, _secondCamera, _thirdCamera, _fourthCamera;
+    void updateFrames();
 };
 #endif // HOMEWINDOW_H
