@@ -32,7 +32,7 @@ public:
                 return (*itr).second;
             i++;
         }
-        // returns a null pointer
+        // returns a null pointer, quick fix
         cv::Point returnPointer;
         return returnPointer;
     }

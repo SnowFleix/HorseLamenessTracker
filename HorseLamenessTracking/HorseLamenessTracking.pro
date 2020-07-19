@@ -20,7 +20,6 @@ SOURCES += \
     main.cpp \
     homewindow.cpp \
     marker.cpp \
-    movingaverage.cpp \
     object.cpp \
     resultspage.cpp \
     trackingpage.cpp
