@@ -22,8 +22,10 @@ private slots:
     void btnGreen_Click();
     void btnBlack_Click();
     void btnWhite_Click();
+
     void btnFinish_Click();
     void btnPause_Click();
+
     void h_max_Changed(int);
     void h_min_Changed(int);
     void s_max_Changed(int);
@@ -32,6 +34,8 @@ private slots:
     void v_min_Changed(int);
 private:
     Ui::ConfigurationPage *ui;
+
+    bool _isVideo;
 };
 
 #endif // CONFIGURATIONPAGE_H
