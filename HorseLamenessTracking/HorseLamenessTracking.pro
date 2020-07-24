@@ -19,7 +19,6 @@ SOURCES += \
     configurationpage.cpp \
     main.cpp \
     homewindow.cpp \
-    marker.cpp \
     object.cpp \
     resultspage.cpp \
     trackingpage.cpp

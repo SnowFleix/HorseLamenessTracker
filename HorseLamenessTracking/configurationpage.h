@@ -24,12 +24,12 @@ private slots:
     void btnWhite_Click();
     void btnFinish_Click();
     void btnPause_Click();
-    void h_max_Changed();
-    void h_min_Changed();
-    void s_max_Changed();
-    void s_min_Changed();
-    void v_max_Changed();
-    void v_min_Changed();
+    void h_max_Changed(int);
+    void h_min_Changed(int);
+    void s_max_Changed(int);
+    void s_min_Changed(int);
+    void v_max_Changed(int);
+    void v_min_Changed(int);
 private:
     Ui::ConfigurationPage *ui;
 };
