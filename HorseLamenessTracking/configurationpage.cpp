@@ -109,7 +109,7 @@ void ConfigurationPage::btnWhite_Click() {
 void ConfigurationPage::btnPause_Click() {
     // make sure we're in video mode
     if (_isVideo) {
-
+        ui->btnPause->setVisible(true);
     }
 }
 
@@ -118,7 +118,7 @@ void ConfigurationPage::btnPause_Click() {
 /// Handles the user closing the page after finishing
 ///
 void ConfigurationPage::btnFinish_Click() {
-
+    this->close();
 }
 
 /////////////////////////////////////////////////////////////
