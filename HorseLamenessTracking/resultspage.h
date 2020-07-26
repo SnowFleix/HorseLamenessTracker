@@ -16,6 +16,10 @@ public:
     explicit ResultsPage(QWidget *parent = nullptr);
     ~ResultsPage();
 
+private slots:
+    void btnClose_Clicked();
+    void btnBack_Clicked();
+
 private:
     Ui::ResultsPage *ui;
 };

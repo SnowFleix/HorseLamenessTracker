@@ -109,7 +109,7 @@ void ConfigurationPage::btnWhite_Click() {
 void ConfigurationPage::btnPause_Click() {
     // make sure we're in video mode
     if (_isVideo) {
-        ui->btnPause->setVisible(true);
+
     }
 }
 

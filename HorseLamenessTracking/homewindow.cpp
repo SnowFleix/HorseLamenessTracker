@@ -1,6 +1,14 @@
 #include "homewindow.h"
 #include "ui_homewindow.h"
 
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::HomeWindow
+/// Default constructor, connects all the ui elements to
+/// functions in the class
+///
+/// \param parent
+/// The parent widget that called this constructor
+///
 HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HomeWindow)
