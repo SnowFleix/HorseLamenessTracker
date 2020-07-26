@@ -37,6 +37,7 @@ void ResultsPage::btnBack_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief ResultsPage::btnClose_Clicked
+/// Handles the user closing the game
 ///
 void ResultsPage::btnClose_Clicked() {
     this->close();
