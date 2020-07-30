@@ -15,6 +15,9 @@ public:
     explicit TrackingPage(QWidget *parent = nullptr);
     ~TrackingPage();
 
+private slots:
+
+
 private:
     Ui::TrackingPage *ui;
 };
