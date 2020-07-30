@@ -15,8 +15,11 @@ public:
     explicit TrackingPage(QWidget *parent = nullptr);
     ~TrackingPage();
 
-private slots:
-
+private slots: // start stop calibrate back
+     void btnStart_Clicked();
+     void btnStop_Clicked();
+     void btnCalibrate_Clicked();
+     void btnBack_Clicked();
 
 private:
     Ui::TrackingPage *ui;

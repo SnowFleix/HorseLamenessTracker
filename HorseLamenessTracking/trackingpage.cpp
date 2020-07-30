@@ -25,3 +25,31 @@ TrackingPage::~TrackingPage()
 {
     delete ui;
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingPage::btnStart_Clicked
+///
+void TrackingPage::btnStart_Clicked() {
+
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingPage::btnStop_Clicked
+///
+void TrackingPage::btnStop_Clicked() {
+
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingPage::btnCalibrate_Clicked
+///
+void TrackingPage::btnCalibrate_Clicked() {
+
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingPage::btnBack_Clicked
+///
+void TrackingPage::btnBack_Clicked() {
+
+}
