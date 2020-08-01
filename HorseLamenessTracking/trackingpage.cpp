@@ -13,6 +13,10 @@ TrackingPage::TrackingPage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::TrackingPage)
 {
+    connect(ui->btnStart, SIGNAL(released()), this, SLOT(btnStart_Clicked()));
+    connect(ui->btnCalibrate, SIGNAL(released()), this, SLOT(btnCalibrate_Clicked()));
+    connect(ui->btnStop, SIGNAL(released()), this, SLOT(btnStop_Clicked()));
+    connect(ui->btnBack, SIGNAL(released()), this, SLOT(btnBack_Clicked()));
     ui->setupUi(this);
 }
 
@@ -44,6 +48,7 @@ void TrackingPage::btnStop_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingPage::btnCalibrate_Clicked
+/// Handles the user clicking the calibrate button
 ///
 void TrackingPage::btnCalibrate_Clicked() {
 
@@ -51,6 +56,7 @@ void TrackingPage::btnCalibrate_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingPage::btnBack_Clicked
+/// Handles the user clicking the back button
 ///
 void TrackingPage::btnBack_Clicked() {
 
