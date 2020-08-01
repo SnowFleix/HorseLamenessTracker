@@ -28,6 +28,7 @@ TrackingPage::~TrackingPage()
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingPage::btnStart_Clicked
+/// Handles the user clicking the start button
 ///
 void TrackingPage::btnStart_Clicked() {
 
@@ -35,6 +36,7 @@ void TrackingPage::btnStart_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingPage::btnStop_Clicked
+/// Handles the user clicking the stop button
 ///
 void TrackingPage::btnStop_Clicked() {
 
