@@ -43,7 +43,7 @@ void TrackingPage::btnStart_Clicked() {
 /// Handles the user clicking the stop button
 ///
 void TrackingPage::btnStop_Clicked() {
-
+    this->close();
 }
 
 /////////////////////////////////////////////////////////////
@@ -59,5 +59,5 @@ void TrackingPage::btnCalibrate_Clicked() {
 /// Handles the user clicking the back button
 ///
 void TrackingPage::btnBack_Clicked() {
-
+    delete ui;
 }
