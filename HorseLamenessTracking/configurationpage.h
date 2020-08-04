@@ -2,7 +2,7 @@
 #define CONFIGURATIONPAGE_H
 
 #include <QWidget>
-#include "Definitions.h"
+#include "definitions.h"
 
 namespace Ui {
 class ConfigurationPage;

@@ -27,16 +27,16 @@ HomeWindow::~HomeWindow() {
 }
 
 void HomeWindow::btnStartNew_Clicked() {
-    TrackingPage trackingPage;
-    trackingPage.show();
+    //TrackingPage trackingPage;
+    //trackingPage.show();
 }
 void HomeWindow::btnCalibrate_Clicked() {
-    ConfigurationPage configPage;
-    configPage.show();
+    //ConfigurationPage configPage;
+    //configPage.show();
 }
 void HomeWindow::btnLoadVideo_Clicked() {
-    ConfigurationPage configPage(nullptr, true);
-    configPage.show();
+    //ConfigurationPage configPage(nullptr, true);
+    //configPage.show();
 }
 void HomeWindow::btnLoadTest_Clicked() {
 

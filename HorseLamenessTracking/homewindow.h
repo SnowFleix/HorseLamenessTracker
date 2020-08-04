@@ -6,8 +6,6 @@
 #include <QFileDialog> // /used for allowing the user to select a file
 #include <opencv2/opencv.hpp>
 
-#include "Definitions.h"
-#include "trackingpage.h"
 #include "configurationpage.h"
 
 QT_BEGIN_NAMESPACE

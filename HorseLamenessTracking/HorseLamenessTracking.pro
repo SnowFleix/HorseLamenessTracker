@@ -45,12 +45,7 @@ TRANSLATIONS += \
 
 INCLUDEPATH += J:\opencv-4.3.0\opencv\build\include
 
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_core320.dll
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_highgui320.dll
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgcodecs320.dll
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_imgproc320.dll
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_features2d320.dll
-#LIBS += J:\OpenCV-QT\OpenCV-2.4.9\build-qt\bin\libopencv_calib3d320.dll
+LIBS += J:\OpenCV\opencv\build\x64\vc15\lib\opencv_world411d.lib
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

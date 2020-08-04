@@ -26,6 +26,7 @@ const QImage defaultIamage = QImage("UI/CameraNotConnected.png");
 // quick hack to be able to share the different webcams on each UI
 static std::vector<cv::VideoCapture> webCamList;
 
+/*
 // Used to stop the duplication of code, so I can quickly set the HSV values
 void ChangeHSVValues(int _h_min,
                      int _h_max,
@@ -39,6 +40,6 @@ void ChangeHSVValues(int _h_min,
     S_MAX = _s_max;
     V_MIN = _v_min;
     V_MAX = _v_max;
-}
+}*/
 
 #endif // DEFINITIONS_H

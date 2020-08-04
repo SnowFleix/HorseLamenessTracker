@@ -60,7 +60,7 @@ ConfigurationPage::~ConfigurationPage()
 /// Handles the user changing the colour to red
 ///
 void ConfigurationPage::btnRed_Click() {
-    ChangeHSVValues(0,5,75,125,75,125);
+    //ChangeHSVValues(0,5,75,125,75,125);
 }
 
 /////////////////////////////////////////////////////////////
@@ -68,7 +68,7 @@ void ConfigurationPage::btnRed_Click() {
 /// Handles the user changing the colour to blue
 ///
 void ConfigurationPage::btnBlue_Click() {
-    ChangeHSVValues(225,255,75,125,75,125);
+    //ChangeHSVValues(225,255,75,125,75,125);
 }
 
 /////////////////////////////////////////////////////////////
@@ -76,7 +76,7 @@ void ConfigurationPage::btnBlue_Click() {
 /// Handles the user changint the colour to yellow
 ///
 void ConfigurationPage::btnYellow_Click() {
-    ChangeHSVValues(50,70,75,125,75,125);
+    //ChangeHSVValues(50,70,75,125,75,125);
 }
 
 /////////////////////////////////////////////////////////////
@@ -84,7 +84,7 @@ void ConfigurationPage::btnYellow_Click() {
 /// Handles the user changint the colour to green
 ///
 void ConfigurationPage::btnGreen_Click() {
-    ChangeHSVValues(100,135,75,125,75,125);
+    //ChangeHSVValues(100,135,75,125,75,125);
 }
 
 /////////////////////////////////////////////////////////////
@@ -92,14 +92,14 @@ void ConfigurationPage::btnGreen_Click() {
 /// Handles the user changint the colour to black
 ///
 void ConfigurationPage::btnBlack_Click() {
-    ChangeHSVValues(0,0,0,0,0,0);
+    //ChangeHSVValues(0,0,0,0,0,0);
 }
 
 /////////////////////////////////////////////////////////////
 /// \brief ConfigurationPage::btnWhite_Click
 /// Handles the user changint the colour to white
 void ConfigurationPage::btnWhite_Click() {
-    ChangeHSVValues(0,0,0,0,100,100);
+    //ChangeHSVValues(0,0,0,0,100,100);
 }
 
 /////////////////////////////////////////////////////////////
