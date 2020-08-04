@@ -27,6 +27,7 @@ private slots:
     void btnCompareTests_Clicked();
 private:
     Ui::HomeWindow *ui;
+    ConfigurationPage configPage; // quick fix change later
     cv::VideoCapture _mainCamera, _secondCamera, _thirdCamera, _fourthCamera;
     void updateFrames();
 };

@@ -13,6 +13,7 @@ HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HomeWindow)
 {
+    configPage(this);
     ui->setupUi(this);
     /* Connects all the pushbuttons to the button click handlers */
     connect(ui->btnStartNew, SIGNAL(released()), this, SLOT(btnStartNew_Clicked()));
@@ -22,29 +23,50 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ui->btnCompare, SIGNAL(released()), this, SLOT(btnCompareTests_Clicked()));
 }
 
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::~HomeWindow
+///
 HomeWindow::~HomeWindow() {
     delete ui;
 }
 
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::btnStartNew_Clicked
+///
 void HomeWindow::btnStartNew_Clicked() {
     //TrackingPage trackingPage;
     //trackingPage.show();
 }
 void HomeWindow::btnCalibrate_Clicked() {
-    //ConfigurationPage configPage;
-    //configPage.show();
+    configPage.open(false);
+    this->hide();
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::btnLoadVideo_Clicked
+///
 void HomeWindow::btnLoadVideo_Clicked() {
-    //ConfigurationPage configPage(nullptr, true);
-    //configPage.show();
+    configPage.open(true);
+    this->hide();
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::btnLoadTest_Clicked
+///
 void HomeWindow::btnLoadTest_Clicked() {
 
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::btnCompareTests_Clicked
+///
 void HomeWindow::btnCompareTests_Clicked() {
 
 }
 
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::updateFrames
+///
 void HomeWindow::updateFrames() {
     cv::Mat frame;
     webCamList[0] >> frame;
