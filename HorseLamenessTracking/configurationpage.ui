@@ -197,6 +197,16 @@
    <property name="title">
     <string>Video Stream</string>
    </property>
+   <widget class="QGraphicsView" name="graphicsViewVideoFeed">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>781</width>
+      <height>491</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="lblHMax">
    <property name="geometry">

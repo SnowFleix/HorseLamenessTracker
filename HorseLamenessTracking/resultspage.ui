@@ -43,63 +43,63 @@
    <property name="title">
     <string>GroupBox</string>
    </property>
-   <widget class="QOpenGLWidget" name="openGLWidget">
+   <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>50</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_2">
+   <widget class="QGraphicsView" name="graphicsView_2">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>400</x>
       <y>50</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_3">
+   <widget class="QGraphicsView" name="graphicsView_3">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>760</x>
       <y>50</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_4">
+   <widget class="QGraphicsView" name="graphicsView_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>30</x>
       <y>300</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_5">
+   <widget class="QGraphicsView" name="graphicsView_5">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>400</x>
       <y>300</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>
-   <widget class="QOpenGLWidget" name="openGLWidget_6">
+   <widget class="QGraphicsView" name="graphicsView_6">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>760</x>
       <y>300</y>
-      <width>300</width>
-      <height>200</height>
+      <width>301</width>
+      <height>201</height>
      </rect>
     </property>
    </widget>

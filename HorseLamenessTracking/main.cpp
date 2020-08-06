@@ -1,6 +1,7 @@
 #include "homewindow.h"
 
 #include <QApplication>
+#include <vector>
 
 int main(int argc, char *argv[])
 {

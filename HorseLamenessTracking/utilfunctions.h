@@ -22,6 +22,10 @@ std::string intToString(int number) {
     return ss.str();
 }
 
+QImage matToImage(cv::Mat mat) {
+    return QImage((uchar*)mat.data, mat.cols, mat.rows, QImage::Format_RGB32);
+}
+
 // function to check if the marker is close enough to another for it to be in that graph
 // TOTO: add multiplyer for frame where
 bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
