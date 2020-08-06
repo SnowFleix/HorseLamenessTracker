@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QCloseEvent>
-#include "Definitions.h"
+#include "utilfunctions.h"
 
 namespace Ui {
 class ConfigurationPage;

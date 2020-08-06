@@ -101,6 +101,7 @@ void ConfigurationPage::btnBlack_Click() {
 /////////////////////////////////////////////////////////////
 /// \brief ConfigurationPage::btnWhite_Click
 /// Handles the user changint the colour to white
+///
 void ConfigurationPage::btnWhite_Click() {
     H_MIN = 0; H_MAX = 0; S_MIN = 0; S_MAX = 0; V_MIN = 100; V_MAX = 100;
 }

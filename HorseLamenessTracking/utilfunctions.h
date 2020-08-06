@@ -1,15 +1,22 @@
 #ifndef UTILFUNCTIONS_H
 #define UTILFUNCTIONS_H
 
-#include "object.h"
-#include "marker.h"
+//QT Libraries
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QImage>
 
-#include "Definitions.h"
+//STL Libraries
+#include <vector>
 
+//OpenCV Libraries
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include <vector>
+//Header Files
+#include "object.h"
+#include "marker.h"
+#include "Definitions.h"
 
 void resizeAnImage(cv::Mat& image, int height, int width) {
     cv::resize(image, image, cv::Size(height, width));
@@ -24,6 +31,20 @@ std::string intToString(int number) {
 
 QImage matToImage(cv::Mat mat) {
     return QImage((uchar*)mat.data, mat.cols, mat.rows, QImage::Format_RGB32);
+}
+
+QGraphicsScene* getSceneFromImage(QImage background) {
+    QGraphicsScene* scene = new QGraphicsScene(QRect(0, 0, 600, 400));
+
+    QPixmap Pix(QPixmap::fromImage(background));
+
+    QGraphicsPixmapItem *item1 = scene->addPixmap(Pix);
+
+    // doesnt work
+    item1->setPos(-25, 45);
+    scene->addPixmap(Pix)->setPos(0,0);
+
+    return scene;
 }
 
 // function to check if the marker is close enough to another for it to be in that graph

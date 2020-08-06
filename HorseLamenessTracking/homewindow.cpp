@@ -70,11 +70,11 @@ void HomeWindow::btnCompareTests_Clicked() {
 void HomeWindow::updateFrames() {
     cv::Mat frame;
     *webCamList[0] >> frame;
-    // need to add the frame to the opengl widgets
+    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
     *webCamList[1] >> frame;
-    // need to add the frame to the opengl widgets
+    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
     *webCamList[2] >> frame;
-    // need to add the frame to the opengl widgets
+    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
     *webCamList[3] >> frame;
-    // need to add the frame to the opengl widgets
+    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
 }
