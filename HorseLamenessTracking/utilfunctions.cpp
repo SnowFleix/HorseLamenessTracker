@@ -72,23 +72,22 @@ QGraphicsScene* getSceneFromImage(QImage background) {
     return scene;
 }
 */
-// function to check if the marker is close enough to another for it to be in that graph
-// TOTO: add multiplyer for frame where
+
 /////////////////////////////////////////////////////////////
 /// \brief checkIfMarkerIsClose
-///
+/// Check if the marker is close enough to another for it to be in that graph
 ///
 /// \param frame
-///
+/// The frame number the marker is detected on
 ///
 /// \param marker
-///
+/// The marker to check
 ///
 /// \param object
-///
+/// The detected object to check if it is close
 ///
 /// \return
-///
+/// A boolean for if the marker is close or not
 ///
 bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
     if (abs(marker.x - object.x) > 20 || abs(marker.y - object.y) > 20) // I need to find a multiplyer that includes frame as if it loses the marker in its current state there is no way that it will be able to find it again after a couple of frames
@@ -101,16 +100,16 @@ bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
 /// Finds the marker that's closest to the xy point sent
 ///
 /// \param frame
-///
+/// The frame number the marker is detected on
 ///
 /// \param markers
-///
+/// A reference to the list of markers to check
 ///
 /// \param xy
-///
+/// The point that the marker was detected at
 ///
 /// \return
-///
+/// The pointer to the marker it was closest to
 ///
 Marker* findClosestMarker(int frame, std::list<Marker*>& markers, cv::Point xy) {
     for (auto it = markers.begin(); it != markers.end(); ++it)
@@ -124,10 +123,10 @@ Marker* findClosestMarker(int frame, std::list<Marker*>& markers, cv::Point xy) 
 /// Draws the object on the screen onto the current origional image
 ///
 /// \param theObjects
-///
+/// Draw all the detected markers on the image
 ///
 /// \param frame
-///
+/// The frame taken from the camera
 ///
 void drawObject(std::vector<Object> theObjects, cv::Mat &frame) {
     for (int i = 0; i < theObjects.size(); i++) {
