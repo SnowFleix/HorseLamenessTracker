@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     configurationpage.cpp \
+    graphicsworker.cpp \
     main.cpp \
     homewindow.cpp \
     object.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     configurationpage.h \
     definitions.h \
+    graphicsworker.h \
     homewindow.h \
     marker.h \
     movingaverage.h \
