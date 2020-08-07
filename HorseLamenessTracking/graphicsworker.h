@@ -6,6 +6,8 @@
 
 // QT Libraries
 #include <QObject>
+#include <QGraphicsView>
+#include <QImage>
 
 // Header files
 #include "utilfunctions.h"
@@ -24,7 +26,7 @@ signals:
     void error(QString error);
 
 private:
-    std::vector<QGraphicsView> _graphicsViewCol;
+    std::vector<QGraphicsView*> _graphicsViewCol;
 
     QImage matToImage(cv::Mat mat);
     QGraphicsScene* getSceneFromImage(QImage background);

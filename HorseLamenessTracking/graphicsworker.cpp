@@ -26,7 +26,11 @@ GraphicsWorker::~GraphicsWorker() {
 /// The code for processing the datapassed in the construcor
 ///
 void GraphicsWorker::process() {
-
+    for (int i =0;i<_graphicsViewCol.size(); i++) {
+        cv::Mat frame;
+        *webCamList[i] >> frame;
+        _graphicsViewCol[i]->setScene(getSceneFromImage(matToImage(frame)));
+    }
 }
 
 /////////////////////////////////////////////////////////////

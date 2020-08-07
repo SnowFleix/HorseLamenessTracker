@@ -13,6 +13,7 @@
 #include <opencv2/opencv.hpp>
 
 // My headers
+#include "graphicsworker.h"
 #include "configurationpage.h"
 
 QT_BEGIN_NAMESPACE
@@ -36,7 +37,7 @@ private:
     Ui::HomeWindow *ui;
     ConfigurationPage configPage; // quick fix change later
     cv::VideoCapture _mainCamera, _secondCamera, _thirdCamera, _fourthCamera;
-    QThread _updateGraphicsViews;
+    QThread* thread = new QThread;
     void updateFrames();
 };
 #endif // HOMEWINDOW_H

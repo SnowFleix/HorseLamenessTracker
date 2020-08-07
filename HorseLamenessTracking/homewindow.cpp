@@ -23,6 +23,18 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ui->btnLoadVideo, SIGNAL(released()), this, SLOT(btnLoadVideo_Clicked()));
     connect(ui->btnLoadTest, SIGNAL(released()), this, SLOT(btnLoadTest_Clicked()));
     connect(ui->btnCompare, SIGNAL(released()), this, SLOT(btnCompareTests_Clicked()));
+
+    // Connect the worker to the thread
+    GraphicsWorker *worker = new GraphicsWorker({ui->graphicsViewCamera1,
+                                                 ui->graphicsViewCamera2,
+                                                 ui->graphicsViewCamera3,
+                                                 ui->graphicsViewCamera4});
+
+    connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+    connect(thread, SIGNAL(started()), worker, SLOT(process()));
+    connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
+    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
 }
 
 /////////////////////////////////////////////////////////////
@@ -31,8 +43,8 @@ HomeWindow::HomeWindow(QWidget *parent)
 ///
 HomeWindow::~HomeWindow() {
     delete ui;
-    _updateGraphicsViews.quit();
-    _updateGraphicsViews.wait();
+    thread->quit();
+    thread->wait();
 }
 
 /////////////////////////////////////////////////////////////
@@ -81,12 +93,5 @@ void HomeWindow::btnCompareTests_Clicked() {
 /// \brief HomeWindow::updateFrames
 ///
 void HomeWindow::updateFrames() {
-    cv::Mat frame;
-    ui->graphicsViewCamera1->setScene(util::getSceneFromImage(util::matToImage(frame)));
-    *webCamList[1] >> frame;
-    ui->graphicsViewCamera2->setScene(util::getSceneFromImage(util::matToImage(frame)));
-    *webCamList[2] >> frame;
-    ui->graphicsViewCamera3->setScene(util::getSceneFromImage(util::matToImage(frame)));
-    *webCamList[3] >> frame;
-    ui->graphicsViewCamera4->setScene(util::getSceneFromImage(util::matToImage(frame)));
+
 }
