@@ -69,12 +69,23 @@ void HomeWindow::btnCompareTests_Clicked() {
 ///
 void HomeWindow::updateFrames() {
     cv::Mat frame;
+    for(cv::VideoCapture* v : webCamList) {
+        if(v) {
+
+        }
+        else {
+
+        }
+    }
     *webCamList[0] >> frame;
-    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
+    if(webCamList[0]){
+
+    }
+    ui->graphicsViewCamera1->setScene(util::getSceneFromImage(util::matToImage(frame)));
     *webCamList[1] >> frame;
-    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
+    ui->graphicsViewCamera2->setScene(util::getSceneFromImage(util::matToImage(frame)));
     *webCamList[2] >> frame;
-    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
+    ui->graphicsViewCamera3->setScene(util::getSceneFromImage(util::matToImage(frame)));
     *webCamList[3] >> frame;
-    ui->graphicsViewCameraOne->setScene(getSceneFromImage(matToImage(frame)));
+    ui->graphicsViewCamera4->setScene(util::getSceneFromImage(util::matToImage(frame)));
 }

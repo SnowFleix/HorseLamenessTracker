@@ -26,7 +26,7 @@
     <property name="title">
      <string>Video Streams</string>
     </property>
-    <widget class="QGraphicsView" name="graphicsViewCameraOne">
+    <widget class="QGraphicsView" name="graphicsViewCamera1">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -36,7 +36,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="graphicsViewCameraTwo">
+    <widget class="QGraphicsView" name="graphicsViewCamera2">
      <property name="geometry">
       <rect>
        <x>460</x>
@@ -46,7 +46,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="graphicsViewCameraThree">
+    <widget class="QGraphicsView" name="graphicsViewCamera3">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -56,7 +56,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QGraphicsView" name="graphicsViewCameraFour">
+    <widget class="QGraphicsView" name="graphicsViewCamera4">
      <property name="geometry">
       <rect>
        <x>460</x>

@@ -7,13 +7,13 @@
 #include <QPixmap>
 #include <QFileDialog> // /used for allowing the user to select a file
 #include <QGraphicsPixmapItem>
+#include <QGraphicsView>
 
 // OpenCV Libraries
 #include <opencv2/opencv.hpp>
 
 // My headers
 #include "configurationpage.h"
-#include "utilfunctions.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HomeWindow; }

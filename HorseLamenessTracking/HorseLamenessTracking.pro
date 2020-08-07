@@ -21,7 +21,8 @@ SOURCES += \
     homewindow.cpp \
     object.cpp \
     resultspage.cpp \
-    trackingpage.cpp
+    trackingpage.cpp \
+    utilfunctions.cpp
 
 HEADERS += \
     configurationpage.h \
