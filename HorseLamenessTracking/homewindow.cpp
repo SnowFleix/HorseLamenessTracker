@@ -13,6 +13,8 @@ HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HomeWindow)
 {
+
+    // set the parent of the config page to this widget
     configPage(this);
     ui->setupUi(this);
     /* Connects all the pushbuttons to the button click handlers */
@@ -25,18 +27,27 @@ HomeWindow::HomeWindow(QWidget *parent)
 
 /////////////////////////////////////////////////////////////
 /// \brief HomeWindow::~HomeWindow
+/// Default destructor, makes sure the thread is close
 ///
 HomeWindow::~HomeWindow() {
     delete ui;
+    _updateGraphicsViews.quit();
+    _updateGraphicsViews.wait();
 }
 
 /////////////////////////////////////////////////////////////
 /// \brief HomeWindow::btnStartNew_Clicked
+/// Handles the user starting a new recording
 ///
 void HomeWindow::btnStartNew_Clicked() {
     //TrackingPage trackingPage;
     //trackingPage.show();
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief HomeWindow::btnCalibrate_Clicked
+/// Opens the calibrartion page
+///
 void HomeWindow::btnCalibrate_Clicked() {
     configPage.open(false);
     this->hide();
@@ -44,6 +55,8 @@ void HomeWindow::btnCalibrate_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief HomeWindow::btnLoadVideo_Clicked
+/// Handles the user loading the user loading a video from
+/// file
 ///
 void HomeWindow::btnLoadVideo_Clicked() {
     configPage.open(true);
@@ -69,18 +82,6 @@ void HomeWindow::btnCompareTests_Clicked() {
 ///
 void HomeWindow::updateFrames() {
     cv::Mat frame;
-    for(cv::VideoCapture* v : webCamList) {
-        if(v) {
-
-        }
-        else {
-
-        }
-    }
-    *webCamList[0] >> frame;
-    if(webCamList[0]){
-
-    }
     ui->graphicsViewCamera1->setScene(util::getSceneFromImage(util::matToImage(frame)));
     *webCamList[1] >> frame;
     ui->graphicsViewCamera2->setScene(util::getSceneFromImage(util::matToImage(frame)));

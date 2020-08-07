@@ -36,6 +36,7 @@ private:
     Ui::HomeWindow *ui;
     ConfigurationPage configPage; // quick fix change later
     cv::VideoCapture _mainCamera, _secondCamera, _thirdCamera, _fourthCamera;
+    QThread _updateGraphicsViews;
     void updateFrames();
 };
 #endif // HOMEWINDOW_H
