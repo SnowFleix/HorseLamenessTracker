@@ -25,8 +25,8 @@ namespace util {
     void resizeAnImage(cv::Mat& image, int height, int width);
     // simple int to string function
     std::string intToString(int number);
-    QImage matToImage(cv::Mat mat);
-    QGraphicsScene* getSceneFromImage(QImage background);
+    //QImage matToImage(cv::Mat mat);
+    //QGraphicsScene* getSceneFromImage(QImage background);
     // function to check if the marker is close enough to another for it to be in that graph
     // TOTO: add multiplyer for frame where
     bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object);
