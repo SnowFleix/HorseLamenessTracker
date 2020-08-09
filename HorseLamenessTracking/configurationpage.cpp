@@ -31,12 +31,12 @@ ConfigurationPage::ConfigurationPage(QWidget *parent) :
     connect(ui->btnSubmit, SIGNAL(released()), this, SLOT(btnFinish_Click()));
 
     // connect the sliders for changing the HSV values to their slots
-    connect(ui->horizontalSliderHMax, SIGNAL(valueChanged(int)), this, SLOT(h_max_Changed()));
-    connect(ui->horizontalSliderHMin, SIGNAL(valueChanged(int)), this, SLOT(h_min_Changed()));
-    connect(ui->horizontalSliderSMax, SIGNAL(valueChanged(int)), this, SLOT(s_max_Changed()));
-    connect(ui->horizontalSliderSMin, SIGNAL(valueChanged(int)), this, SLOT(s_min_Changed()));
-    connect(ui->horizontalSliderVMax, SIGNAL(valueChanged(int)), this, SLOT(v_max_Changed()));
-    connect(ui->horizontalSliderVMin, SIGNAL(valueChanged(int)), this, SLOT(v_min_Changed()));
+    connect(ui->horizontalSliderHMax, SIGNAL(valueChanged(int)), this, SLOT(h_max_Changed(int)));
+    connect(ui->horizontalSliderHMin, SIGNAL(valueChanged(int)), this, SLOT(h_min_Changed(int)));
+    connect(ui->horizontalSliderSMax, SIGNAL(valueChanged(int)), this, SLOT(s_max_Changed(int)));
+    connect(ui->horizontalSliderSMin, SIGNAL(valueChanged(int)), this, SLOT(s_min_Changed(int)));
+    connect(ui->horizontalSliderVMax, SIGNAL(valueChanged(int)), this, SLOT(v_max_Changed(int)));
+    connect(ui->horizontalSliderVMin, SIGNAL(valueChanged(int)), this, SLOT(v_min_Changed(int)));
 
     // add ticks to the bottom of the sliders
     ui->horizontalSliderHMax->setTickPosition(QSlider::TicksBelow);
