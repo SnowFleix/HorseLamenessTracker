@@ -17,6 +17,19 @@ TrackingPage::TrackingPage(QWidget *parent) :
     connect(ui->btnCalibrate, SIGNAL(released()), this, SLOT(btnCalibrate_Clicked()));
     connect(ui->btnStop, SIGNAL(released()), this, SLOT(btnStop_Clicked()));
     connect(ui->btnBack, SIGNAL(released()), this, SLOT(btnBack_Clicked()));
+
+    //// Connect the worker to the thread
+    //GraphicsWorker *worker = new GraphicsWorker({ui->graphicsViewCamera1,
+    //                                             ui->graphicsViewCamera2,
+    //                                             ui->graphicsViewCamera3,
+    //                                             ui->graphicsViewCamera4});
+
+    //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+    //connect(thread, SIGNAL(started()), worker, SLOT(process()));
+    //connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
+    //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+
     ui->setupUi(this);
 }
 

@@ -45,6 +45,18 @@ ConfigurationPage::ConfigurationPage(QWidget *parent) :
     ui->horizontalSliderSMin->setTickPosition(QSlider::TicksBelow);
     ui->horizontalSliderVMax->setTickPosition(QSlider::TicksBelow);
     ui->horizontalSliderVMin->setTickPosition(QSlider::TicksBelow);
+
+    //// Connect the worker to the thread
+    //GraphicsWorker *worker = new GraphicsWorker({ui->graphicsViewCamera1,
+    //                                             ui->graphicsViewCamera2,
+    //                                             ui->graphicsViewCamera3,
+    //                                             ui->graphicsViewCamera4});
+
+    //connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+    //connect(thread, SIGNAL(started()), worker, SLOT(process()));
+    //connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
+    //connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    //connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
 }
 
 /////////////////////////////////////////////////////////////
