@@ -33,46 +33,6 @@ std::string intToString(int number) {
     return ss.str();
 }
 
-/*
-/////////////////////////////////////////////////////////////
-/// \brief matToImage
-///
-///
-/// \param mat
-///
-///
-/// \return
-///
-///
-QImage matToImage(cv::Mat mat) {
-    return QImage((uchar*)mat.data, mat.cols, mat.rows, QImage::Format_RGB32);
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief getSceneFromImage
-///
-///
-/// \param background
-///
-///
-/// \return
-///
-///
-QGraphicsScene* getSceneFromImage(QImage background) {
-    QGraphicsScene* scene = new QGraphicsScene(QRect(0, 0, 600, 400));
-
-    QPixmap Pix(QPixmap::fromImage(background));
-
-    QGraphicsPixmapItem *item1 = scene->addPixmap(Pix);
-
-    // doesnt work
-    item1->setPos(-25, 45);
-    scene->addPixmap(Pix)->setPos(0,0);
-
-    return scene;
-}
-*/
-
 /////////////////////////////////////////////////////////////
 /// \brief checkIfMarkerIsClose
 /// Check if the marker is close enough to another for it to be in that graph
