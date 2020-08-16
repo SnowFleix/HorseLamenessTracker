@@ -247,7 +247,7 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
         return;
 
     //if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
-    if (hierarchy.size() <= MAX_NUM_OBJECTS) {
+    if (hierarchy.size() > MAX_NUM_OBJECTS) {
         putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
         return;
     }
@@ -262,13 +262,12 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
         if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
             continue;
 
-        int posX = moment.m10 / area; int posY = moment.m01 / area;
+        int posX = moment.m10 / area;
+        int posY = moment.m01 / area;
 
-        if(isTracking) {
-            if(!checkIfFirstMarker(frame, markerLst, posX, posY)) {
-                Marker* m = findClosestMarker(frame, markerLst, cv::Point(posX, posY));
-                checkIfMarkerIsNew(frame, markerLst, m, posX, posY);
-            }
+        if(isTracking && !checkIfFirstMarker(frame, markerLst, posX, posY)) {
+            Marker* m = findClosestMarker(frame, markerLst, cv::Point(posX, posY));
+            checkIfMarkerIsNew(frame, markerLst, m, posX, posY);
         }
 
         objects.push_back(cv::Point(posX, posY));
