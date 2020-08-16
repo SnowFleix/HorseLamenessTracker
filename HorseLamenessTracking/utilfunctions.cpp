@@ -79,8 +79,53 @@ Marker* findClosestMarker(int frame, std::list<Marker*>& markers, cv::Point xy) 
 }
 
 /////////////////////////////////////////////////////////////
+/// \brief checkIfMarkerIsNew
+/// Checks if a marker detected has been detected before or
+/// is a new marker that needs to be added to the list
+///
+/// \param frame
+/// Frame in the video
+///
+/// \param markers
+/// List of markers to add to
+///
+/// \param m
+/// The marker to check
+///
+/// \param posX
+/// Position x of the marker
+///
+/// \param posY
+/// Position y of the marker
+///
+void checkIfMarkerIsNew(int frame, std::list<Marker*>& markers, Marker* m, int posX, int posY) {
+    if (m != nullptr && m->getLastFrame() != frame) {
+        m->addPosition(frame, cv::Point(posX, posY));
+        return;
+    }
+    markers.push_back(new Marker(frame, posX, posY));
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief checkIfFirstMarker
+/// \param frame
+/// \param markers
+/// \param posX
+/// \param posY
+/// \return
+///
+bool checkIfFirstMarker(int frame, std::list<Marker*>& markers, int posX, int posY) {
+    if (markers.size() == 0) { // if the marker list has markers in it find the closest marker and then add the new point to it
+        markers.push_back(new Marker(frame, posX, posY));
+        return true;
+    }
+    return false;
+}
+
+/////////////////////////////////////////////////////////////
 /// \brief drawObject
-/// Draws the object on the screen onto the current origional image
+/// Draws the object on the screen onto the current original
+/// image
 ///
 /// \param theObjects
 /// Draw all the detected markers on the image
@@ -88,22 +133,22 @@ Marker* findClosestMarker(int frame, std::list<Marker*>& markers, cv::Point xy) 
 /// \param frame
 /// The frame taken from the camera
 ///
-void drawObject(std::vector<Object> theObjects, cv::Mat &frame) {
+void drawObject(std::vector<cv::Point> theObjects, cv::Mat& frame) {
     for (int i = 0; i < theObjects.size(); i++) {
-        cv::circle(frame, cv::Point(theObjects.at(i).getXPos(), theObjects.at(i).getYPos()), 10, cv::Scalar(0, 0, 255));
-        cv::putText(frame, intToString(theObjects.at(i).getXPos()) + " , " + intToString(theObjects.at(i).getYPos()), cv::Point(theObjects.at(i).getXPos(), theObjects.at(i).getYPos() + 20), 1, 1, cv::Scalar(0, 255, 0));
-        cv::putText(frame, "Object " + i, cv::Point(theObjects.at(i).getXPos(), theObjects.at(i).getYPos() - 30), 1, 2, cv::Scalar(0, 255, 0));
+        cv::circle(frame, cv::Point(theObjects[i].x, theObjects[i].y), 10, cv::Scalar(0, 0, 255));
+        cv::putText(frame, intToString(theObjects[i].x) + " , " + intToString(theObjects[i].y), cv::Point(theObjects[i].x, theObjects[i].y + 20), 1, 1, cv::Scalar(0, 255, 0));
+        cv::putText(frame, "Object " + i, cv::Point(theObjects[i].x, theObjects[i].y - 30), 1, 2, cv::Scalar(0, 255, 0));
     }
 }
 
 /////////////////////////////////////////////////////////////
 /// \brief morphOps
-///
+/// Erodes and dilates the threshold image
 ///
 /// \param thresh
+/// The threshold image
 ///
-///
-void morphOps(cv::Mat &thresh) {
+void morphOps(cv::Mat& thresh) {
     cv::Mat erodeElement = getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(1, 1));
     cv::Mat dilateElement = getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
 
@@ -116,22 +161,26 @@ void morphOps(cv::Mat &thresh) {
 
 /////////////////////////////////////////////////////////////
 /// \brief trackFilteredObject
-///
+/// Tracks markers on an image or draws them on the image
+/// without tracking
 ///
 /// \param markerLst
-///
+/// The lst of markers to add to
 ///
 /// \param frame
-///
+/// The frame we are currently on
 ///
 /// \param threshold
-///
+/// The threshold image with the background already removed
 ///
 /// \param cameraFeed
+/// The video straight from the camera to draw onto
 ///
+/// \remarks
+/// This function is still too busy and I'd like to make it do less
 ///
-void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat threshold, cv::Mat &cameraFeed) {
-    std::vector <Object> objects;
+void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat threshold, cv::Mat& cameraFeed, bool isTracking = false) {
+    std::vector <cv::Point> objects;
     cv::Mat temp;
     threshold.copyTo(temp);
     //these two vectors needed for output of findContours
@@ -139,7 +188,7 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
     std::vector<cv::Vec4i> hierarchy;
     //find contours of filtered image using openCV findContours function
     cv::findContours(temp, contours, hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
-    bool objectFound = false;
+
     if (hierarchy.size() <= 0)
         return;
 
@@ -149,98 +198,31 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
         return;
     }
 
-     for (int index = 0; index >= 0; index = hierarchy[index][0]) {
+    for (int index = 0; index >= 0; index = hierarchy[index][0]) {
 
-         cv::Moments moment = moments((cv::Mat)contours[index]);
-         double area = moment.m00;
-         //if the area is less than 20 px by 20px then it is probably just noise
-         //if the area is the same as the 3/2 of the image size, probably just a bad filter
-         if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
-         {
-             Object object;
+        cv::Moments moment = moments((cv::Mat)contours[index]);
+        double area = moment.m00;
 
-             object.setXPos(moment.m10 / area);
-             object.setYPos(moment.m01 / area);
+        //if the area is less than 20 px by 20px then it is probably just noise
+        //if the area is the same as the 3/2 of the image size, probably just a bad filter
+        if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
+            continue;
 
-             //probably won't work as markers come onto the screen and then get detected at different times
-             //need to make a way that if a marker gets detected in a new area it will add a new marker to the list
-             if (markerLst.size() > 0) { // if the marker list has markers in it find the closest marker and then add the new point to it
-                 Marker* m = findClosestMarker(frame, markerLst, cv::Point(object.getXPos(), object.getYPos()));
-                 if (m != nullptr) {
-                     if (m->getLastFrame() != frame)
-                         m->addPosition(frame, cv::Point(object.getXPos(), object.getYPos()));
-                 }
-                 else
-                     markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
-             }
-             else
-                 markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
+        int posX = moment.m10 / area; int posY = moment.m01 / area;
 
-             objects.push_back(object);
-
-             objectFound = true;
-
-         }
-         else objectFound = false;
-     }
-     //let user know you found an object
-     if (objectFound == true) {
-         //draw object location on screen
-         drawObject(objects, cameraFeed);
-     }
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief displayMarkersOnScreen
-///
-///
-/// \param threshold
-///
-///
-/// \param cameraFeed
-///
-///
-void displayMarkersOnScreen(cv::Mat threshold, cv::Mat &cameraFeed) {
-    std::vector <Object> objects;
-    cv::Mat temp;
-    threshold.copyTo(temp);
-    //these two vectors needed for output of findContours
-    std::vector<std::vector<cv::Point>> contours;
-    std::vector<cv::Vec4i> hierarchy;
-    //find contours of filtered image using openCV findContours function
-    cv::findContours(temp, contours, hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
-    //use moments method to find our filtered object
-    bool objectFound = false;
-    if (hierarchy.size() > 0) {
-        int numObjects = hierarchy.size();
-        //if number of objects greater than MAX_NUM_OBJECTS then there is too much noise in the image
-        if (numObjects < MAX_NUM_OBJECTS) {
-
-            for (int index = 0; index >= 0; index = hierarchy[index][0]) {
-
-                cv::Moments moment = moments((cv::Mat)contours[index]);
-                double area = moment.m00;
-                // if the area is less than 20 px by 20px then it is probably just noise
-                // if the area is the same as the 3/2 of the image size, probably just a bad filter
-                if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
-                {
-                    Object object;
-
-                    object.setXPos(moment.m10 / area);
-                    object.setYPos(moment.m01 / area);
-
-                    objects.push_back(object);
-
-                    objectFound = true;
-
-                }
-                else objectFound = false;
-            }
-            if (objectFound == true) {
-                // draw object on the screen
-                drawObject(objects, cameraFeed);
+        if(isTracking) {
+            if(!checkIfFirstMarker(frame, markerLst, posX, posY)) {
+                Marker* m = findClosestMarker(frame, markerLst, cv::Point(posX, posY));
+                checkIfMarkerIsNew(frame, markerLst, m, posX, posY);
             }
         }
-        else putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
+
+        objects.push_back(cv::Point(posX, posY));
+    }
+
+    //let user know you found an object
+    if (objects.size() > 0) {
+        //draw object location on screen
+        drawObject(objects, cameraFeed);
     }
 }
