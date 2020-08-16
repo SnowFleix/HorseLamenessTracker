@@ -1,9 +1,12 @@
 #ifndef CONFIGURATIONPAGE_H
 #define CONFIGURATIONPAGE_H
 
+#include <QThread>
 #include <QWidget>
 #include <QCloseEvent>
+
 #include "utilfunctions.h"
+#include "graphicsworker.h"
 
 namespace Ui {
 class ConfigurationPage;
@@ -43,6 +46,7 @@ private:
     Ui::ConfigurationPage *ui;
     // set to nullptr so we can check later
     QWidget* _parent = nullptr;
+    QThread* thread = new QThread;
     bool _isVideo;
 };
 

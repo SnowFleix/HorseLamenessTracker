@@ -34,8 +34,51 @@ std::string intToString(int number) {
 }
 
 /////////////////////////////////////////////////////////////
+/// \brief toQString
+/// Converts a std::string to a QString for easy compatibility
+///
+/// \param string
+/// A std::string
+///
+/// \return
+/// A QString made from the std::string
+///
+QString toQString(std::string string) {
+    return QString::fromStdString(string);
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief toQString
+/// Converts a const wchar_t* to a QString
+///
+/// \param string
+/// The const wchar_t*
+///
+/// \return
+/// A QString made from the const wchar_t*
+///
+QString toQString(const wchar_t* string) {
+    return QString::fromWCharArray(string);
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief QStringToStdString
+/// Converts a QString to a std::string
+///
+/// \param string
+/// The QString to convert to a std::string
+///
+/// \return
+/// The converted std::string
+///
+std::string QStringToStdString(QString string) {
+    return string.toLocal8Bit().constData();
+}
+
+/////////////////////////////////////////////////////////////
 /// \brief checkIfMarkerIsClose
-/// Check if the marker is close enough to another for it to be in that graph
+/// Check if the marker is close enough to another for it to
+/// be in that graph
 ///
 /// \param frame
 /// The frame number the marker is detected on
@@ -210,7 +253,7 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
     }
 
     for (int index = 0; index >= 0; index = hierarchy[index][0]) {
-
+        // get all the moment at i
         cv::Moments moment = moments((cv::Mat)contours[index]);
         double area = moment.m00;
 

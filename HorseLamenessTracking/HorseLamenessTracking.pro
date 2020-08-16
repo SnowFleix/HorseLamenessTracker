@@ -17,10 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     configurationpage.cpp \
+    filehandler.cpp \
     graphicsworker.cpp \
     main.cpp \
     homewindow.cpp \
-    object.cpp \
     resultspage.cpp \
     trackingpage.cpp \
     utilfunctions.cpp
@@ -28,11 +28,11 @@ SOURCES += \
 HEADERS += \
     configurationpage.h \
     definitions.h \
+    filehandler.h \
     graphicsworker.h \
     homewindow.h \
     marker.h \
     movingaverage.h \
-    object.h \
     resultspage.h \
     trackingpage.h \
     utilfunctions.h
