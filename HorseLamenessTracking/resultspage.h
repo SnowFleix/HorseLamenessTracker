@@ -2,7 +2,11 @@
 #define RESULTSPAGE_H
 
 #include <QWidget>
+#include <QThread>
 #include <QtCharts>
+#include <QGraphicsView>
+
+#include "graphicsworker.h"
 
 namespace Ui {
 class ResultsPage;

@@ -13,7 +13,6 @@ HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HomeWindow)
 {
-
     // set the parent of the config page to this widget
     configPage(this);
     ui->setupUi(this);
@@ -24,17 +23,19 @@ HomeWindow::HomeWindow(QWidget *parent)
     connect(ui->btnLoadTest, SIGNAL(released()), this, SLOT(btnLoadTest_Clicked()));
     connect(ui->btnCompare, SIGNAL(released()), this, SLOT(btnCompareTests_Clicked()));
 
-//    // Connect the worker to the thread
-//    GraphicsWorker *worker = new GraphicsWorker({ui->graphicsViewCamera1,
-//                                                 ui->graphicsViewCamera2,
-//                                                 ui->graphicsViewCamera3,
-//                                                 ui->graphicsViewCamera4});
+    // Connect the worker to the thread
+    GraphicsWorker *worker = new GraphicsWorker({ui->graphicsViewCamera1,
+                                                 ui->graphicsViewCamera2,
+                                                 ui->graphicsViewCamera3,
+                                                 ui->graphicsViewCamera4});
 
-//    connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
-//    connect(thread, SIGNAL(started()), worker, SLOT(process()));
-//    connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
-//    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
-//    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+    connect(worker, SIGNAL(error(QString)), this, SLOT(errorString(QString)));
+    connect(thread, SIGNAL(started()), worker, SLOT(process()));
+    connect(worker, SIGNAL(finished()), thread, SLOT(quit()));
+    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
+
+    thread->start();
 }
 
 /////////////////////////////////////////////////////////////
@@ -77,6 +78,7 @@ void HomeWindow::btnLoadVideo_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief HomeWindow::btnLoadTest_Clicked
+/// Handles the user trying to load the test
 ///
 void HomeWindow::btnLoadTest_Clicked() {
 
@@ -84,14 +86,8 @@ void HomeWindow::btnLoadTest_Clicked() {
 
 /////////////////////////////////////////////////////////////
 /// \brief HomeWindow::btnCompareTests_Clicked
+/// Handles the user attempting to compare multiple tests
 ///
 void HomeWindow::btnCompareTests_Clicked() {
-
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief HomeWindow::updateFrames
-///
-void HomeWindow::updateFrames() {
 
 }

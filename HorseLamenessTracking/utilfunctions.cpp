@@ -140,53 +140,54 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
     //find contours of filtered image using openCV findContours function
     cv::findContours(temp, contours, hierarchy, cv::RETR_CCOMP, cv::CHAIN_APPROX_SIMPLE);
     bool objectFound = false;
-    if (hierarchy.size() > 0) {
+    if (hierarchy.size() <= 0)
+        return;
 
-        //if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
-        if (hierarchy.size() < MAX_NUM_OBJECTS) {
-
-            for (int index = 0; index >= 0; index = hierarchy[index][0]) {
-
-                cv::Moments moment = moments((cv::Mat)contours[index]);
-                double area = moment.m00;
-                //if the area is less than 20 px by 20px then it is probably just noise
-                //if the area is the same as the 3/2 of the image size, probably just a bad filter
-                if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
-                {
-                    Object object;
-
-                    object.setXPos(moment.m10 / area);
-                    object.setYPos(moment.m01 / area);
-
-                    //probably won't work as markers come onto the screen and then get detected at different times
-                    //need to make a way that if a marker gets detected in a new area it will add a new marker to the list
-                    if (markerLst.size() > 0) { // if the marker list has markers in it find the closest marker and then add the new point to it
-                        Marker* m = findClosestMarker(frame, markerLst, cv::Point(object.getXPos(), object.getYPos()));
-                        if (m != nullptr) {
-                            if (m->getLastFrame() != frame)
-                                m->addPosition(frame, cv::Point(object.getXPos(), object.getYPos()));
-                        }
-                        else
-                            markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
-                    }
-                    else
-                        markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
-
-                    objects.push_back(object);
-
-                    objectFound = true;
-
-                }
-                else objectFound = false;
-            }
-            //let user know you found an object
-            if (objectFound == true) {
-                //draw object location on screen
-                drawObject(objects, cameraFeed);
-            }
-        }
-        else putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
+    //if number of objects greater than MAX_NUM_OBJECTS we have a noisy filter
+    if (hierarchy.size() <= MAX_NUM_OBJECTS) {
+        putText(cameraFeed, "TOO MUCH NOISE! ADJUST FILTER", cv::Point(0, 50), 1, 2, cv::Scalar(0, 0, 255), 2);
+        return;
     }
+
+     for (int index = 0; index >= 0; index = hierarchy[index][0]) {
+
+         cv::Moments moment = moments((cv::Mat)contours[index]);
+         double area = moment.m00;
+         //if the area is less than 20 px by 20px then it is probably just noise
+         //if the area is the same as the 3/2 of the image size, probably just a bad filter
+         if (area > MIN_OBJECT_AREA && area < MAX_OBJECT_AREA)
+         {
+             Object object;
+
+             object.setXPos(moment.m10 / area);
+             object.setYPos(moment.m01 / area);
+
+             //probably won't work as markers come onto the screen and then get detected at different times
+             //need to make a way that if a marker gets detected in a new area it will add a new marker to the list
+             if (markerLst.size() > 0) { // if the marker list has markers in it find the closest marker and then add the new point to it
+                 Marker* m = findClosestMarker(frame, markerLst, cv::Point(object.getXPos(), object.getYPos()));
+                 if (m != nullptr) {
+                     if (m->getLastFrame() != frame)
+                         m->addPosition(frame, cv::Point(object.getXPos(), object.getYPos()));
+                 }
+                 else
+                     markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
+             }
+             else
+                 markerLst.push_back(new Marker(frame, object.getXPos(), object.getYPos()));
+
+             objects.push_back(object);
+
+             objectFound = true;
+
+         }
+         else objectFound = false;
+     }
+     //let user know you found an object
+     if (objectFound == true) {
+         //draw object location on screen
+         drawObject(objects, cameraFeed);
+     }
 }
 
 /////////////////////////////////////////////////////////////
