@@ -108,11 +108,22 @@ void checkIfMarkerIsNew(int frame, std::list<Marker*>& markers, Marker* m, int p
 
 /////////////////////////////////////////////////////////////
 /// \brief checkIfFirstMarker
+/// Checks if the marker detected is the first one detected
+///
 /// \param frame
+/// The frame the marker was detected on
+///
 /// \param markers
+/// The marker list to check
+///
 /// \param posX
+/// The x position of the object detected
+///
 /// \param posY
+/// The y position of the object detected
+///
 /// \return
+/// A bool whether the marker is the first one or not
 ///
 bool checkIfFirstMarker(int frame, std::list<Marker*>& markers, int posX, int posY) {
     if (markers.size() == 0) { // if the marker list has markers in it find the closest marker and then add the new point to it

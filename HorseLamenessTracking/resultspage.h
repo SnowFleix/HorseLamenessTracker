@@ -6,8 +6,6 @@
 #include <QtCharts>
 #include <QGraphicsView>
 
-#include "graphicsworker.h"
-
 namespace Ui {
 class ResultsPage;
 }
