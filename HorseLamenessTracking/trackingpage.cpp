@@ -36,7 +36,10 @@ TrackingPage::~TrackingPage()
 /// Handles the user clicking the start button
 ///
 void TrackingPage::btnStart_Clicked() {
+    isTracking = true;
+    while(isTracking) {
 
+    }
 }
 
 /////////////////////////////////////////////////////////////

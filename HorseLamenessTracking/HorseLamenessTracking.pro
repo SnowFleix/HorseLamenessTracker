@@ -23,6 +23,7 @@ SOURCES += \
     homewindow.cpp \
     resultspage.cpp \
     trackingpage.cpp \
+    trackingworker.cpp \
     utilfunctions.cpp
 
 HEADERS += \
@@ -35,6 +36,7 @@ HEADERS += \
     movingaverage.h \
     resultspage.h \
     trackingpage.h \
+    trackingworker.h \
     utilfunctions.h
 
 FORMS += \

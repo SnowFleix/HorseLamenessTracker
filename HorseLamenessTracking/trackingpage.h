@@ -23,6 +23,7 @@ private slots: // start stop calibrate back
 
 private:
     Ui::TrackingPage *ui;
+    bool isTracking = false;
 };
 
 #endif // TRACKINGPAGE_H
