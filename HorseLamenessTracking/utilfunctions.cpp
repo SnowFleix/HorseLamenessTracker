@@ -76,107 +76,6 @@ std::string QStringToStdString(QString string) {
 }
 
 /////////////////////////////////////////////////////////////
-/// \brief checkIfMarkerIsClose
-/// Check if the marker is close enough to another for it to
-/// be in that graph
-///
-/// \param frame
-/// The frame number the marker is detected on
-///
-/// \param marker
-/// The marker to check
-///
-/// \param object
-/// The detected object to check if it is close
-///
-/// \return
-/// A boolean for if the marker is close or not
-///
-bool checkIfMarkerIsClose(int frame, cv::Point marker, cv::Point object) {
-    if (abs(marker.x - object.x) > 20 || abs(marker.y - object.y) > 20) // I need to find a multiplyer that includes frame as if it loses the marker in its current state there is no way that it will be able to find it again after a couple of frames
-        return false;
-    return true;
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief findClosestMarker
-/// Finds the marker that's closest to the xy point sent
-///
-/// \param frame
-/// The frame number the marker is detected on
-///
-/// \param markers
-/// A reference to the list of markers to check
-///
-/// \param xy
-/// The point that the marker was detected at
-///
-/// \return
-/// The pointer to the marker it was closest to
-///
-Marker* findClosestMarker(int frame, std::list<Marker*>& markers, cv::Point xy) {
-    for (auto it = markers.begin(); it != markers.end(); ++it)
-        if (checkIfMarkerIsClose(frame, (*it)->getLastPoint(), xy))
-            return *it;
-    return nullptr;
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief checkIfMarkerIsNew
-/// Checks if a marker detected has been detected before or
-/// is a new marker that needs to be added to the list
-///
-/// \param frame
-/// Frame in the video
-///
-/// \param markers
-/// List of markers to add to
-///
-/// \param m
-/// The marker to check
-///
-/// \param posX
-/// Position x of the marker
-///
-/// \param posY
-/// Position y of the marker
-///
-void checkIfMarkerIsNew(int frame, std::list<Marker*>& markers, Marker* m, int posX, int posY) {
-    if (m != nullptr && m->getLastFrame() != frame) {
-        m->addPosition(frame, cv::Point(posX, posY));
-        return;
-    }
-    markers.push_back(new Marker(frame, posX, posY));
-}
-
-/////////////////////////////////////////////////////////////
-/// \brief checkIfFirstMarker
-/// Checks if the marker detected is the first one detected
-///
-/// \param frame
-/// The frame the marker was detected on
-///
-/// \param markers
-/// The marker list to check
-///
-/// \param posX
-/// The x position of the object detected
-///
-/// \param posY
-/// The y position of the object detected
-///
-/// \return
-/// A bool whether the marker is the first one or not
-///
-bool checkIfFirstMarker(int frame, std::list<Marker*>& markers, int posX, int posY) {
-    if (markers.size() == 0) { // if the marker list has markers in it find the closest marker and then add the new point to it
-        markers.push_back(new Marker(frame, posX, posY));
-        return true;
-    }
-    return false;
-}
-
-/////////////////////////////////////////////////////////////
 /// \brief drawObject
 /// Draws the object on the screen onto the current original
 /// image
@@ -265,9 +164,8 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
         int posX = moment.m10 / area;
         int posY = moment.m01 / area;
 
-        if(isTracking && !checkIfFirstMarker(frame, markerLst, posX, posY)) {
-            Marker* m = findClosestMarker(frame, markerLst, cv::Point(posX, posY));
-            checkIfMarkerIsNew(frame, markerLst, m, posX, posY);
+        if(isTracking) {
+
         }
 
         objects.push_back(cv::Point(posX, posY));
