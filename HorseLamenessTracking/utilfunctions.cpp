@@ -164,6 +164,10 @@ void trackFilteredObject(std::list<Marker*>& markerLst, int frame, cv::Mat thres
         int posX = moment.m10 / area;
         int posY = moment.m01 / area;
 
+        if(isTracking) {
+
+        }
+
         objects.push_back(cv::Point(posX, posY));
     }
 
