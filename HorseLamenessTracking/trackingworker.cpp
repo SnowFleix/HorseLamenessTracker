@@ -113,3 +113,30 @@ bool TrackingWorker::checkIfFirstMarker() {
     }
     return false;
 }
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingWorker::process
+///
+void TrackingWorker::process() {
+    if(checkIfFirstMarker())
+        return;
+    Marker* m = findClosestMarker();
+    checkIfMarkerIsNew(m);
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingWorker::finished
+///
+void TrackingWorker::finished() {
+
+}
+
+/////////////////////////////////////////////////////////////
+/// \brief TrackingWorker::error
+///
+///
+/// \param error
+///
+void TrackingWorker::error(QString error) {
+
+}
