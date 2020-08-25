@@ -116,6 +116,7 @@ bool TrackingWorker::checkIfFirstMarker() {
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingWorker::process
+/// Handles the whe worker being called
 ///
 void TrackingWorker::process() {
     if(checkIfFirstMarker())
@@ -126,6 +127,7 @@ void TrackingWorker::process() {
 
 /////////////////////////////////////////////////////////////
 /// \brief TrackingWorker::finished
+/// Handles the worker finishing it's task and returning
 ///
 void TrackingWorker::finished() {
 
