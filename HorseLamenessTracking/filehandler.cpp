@@ -91,7 +91,8 @@ std::string FileHandler::GetTextFromFile(QWidget* widget) {
 /// A vector of QFiles (only *.htp files) that are within the directory
 ///
 std::vector<QFile> FileHandler::GetAllFilesFromDirectory(std::string directory) {
-
+    std::vector<QFile> returnType;
+    return returnType;
 }
 
 /////////////////////////////////////////////////////////////
