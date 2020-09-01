@@ -9,27 +9,23 @@
 /// The collection of graphicsViews that are going to be fed
 /// video
 ///
-GraphicsWorker::GraphicsWorker(std::vector<QGraphicsView*> graphicsViews) : _graphicsViewCol(graphicsViews) {
-
-}
+GraphicsWorker::GraphicsWorker(std::vector<QGraphicsView*> graphicsViews) : graphicsViewCol_(graphicsViews) { }
 
 /////////////////////////////////////////////////////////////
 /// \brief GraphicsWorker::~GraphicsWorker
 /// Default destructor, deletes all the data in the class
 ///
-GraphicsWorker::~GraphicsWorker() {
-
-}
+GraphicsWorker::~GraphicsWorker() { }
 
 /////////////////////////////////////////////////////////////
 /// \brief GraphicsWorker::process
 /// The code for processing the datapassed in the construcor
 ///
 void GraphicsWorker::process() {
-    for (int i =0;i<_graphicsViewCol.size(); i++) {
+    for (int i = 0; i < (int)graphicsViewCol_.size(); i++) {
         cv::Mat frame;
         *webCamList[i] >> frame;
-        _graphicsViewCol[i]->setScene(getSceneFromImage(matToImage(frame)));
+        graphicsViewCol_[i]->setScene(getSceneFromImage(matToImage(frame)));
     }
 }
 

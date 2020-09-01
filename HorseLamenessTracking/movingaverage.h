@@ -1,6 +1,7 @@
 #ifndef MOVINGAVERAGE_H
 #define MOVINGAVERAGE_H
 
+//STL Libraries
 #include <iostream>
 #include <stddef.h>
 #include <assert.h>

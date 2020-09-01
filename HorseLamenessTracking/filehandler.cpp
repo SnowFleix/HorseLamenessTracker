@@ -4,17 +4,13 @@
 /// \brief FileHandler::FileHandler
 /// Default constructor
 ///
-FileHandler::FileHandler() {
-
-}
+FileHandler::FileHandler() { }
 
 /////////////////////////////////////////////////////////////
 /// \brief FileHandler::~FileHandler
 /// Default destructor
 ///
-FileHandler::~FileHandler() {
-
-}
+FileHandler::~FileHandler() { }
 
 /////////////////////////////////////////////////////////////
 /// \brief FileHandler::GetFile
@@ -92,6 +88,7 @@ std::string FileHandler::GetTextFromFile(QWidget* widget) {
 ///
 std::vector<QFile> FileHandler::GetAllFilesFromDirectory(std::string directory) {
     std::vector<QFile> returnType;
+    if(directory.find_first_not_of(' ') == std::string::npos) return returnType;
     return returnType;
 }
 

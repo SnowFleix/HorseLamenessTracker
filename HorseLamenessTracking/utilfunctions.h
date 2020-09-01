@@ -1,8 +1,6 @@
 #ifndef UTILFUNCTIONS_H
 #define UTILFUNCTIONS_H
 
-#pragma once
-
 //QT Libraries
 #include <QtCore/qglobal.h>
 #include <QGraphicsPixmapItem>

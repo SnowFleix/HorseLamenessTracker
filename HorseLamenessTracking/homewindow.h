@@ -9,10 +9,10 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
 
-// OpenCV Libraries
+//OpenCV Libraries
 #include <opencv2/opencv.hpp>
 
-// My headers
+//Header Files
 #include "graphicsworker.h"
 #include "configurationpage.h"
 

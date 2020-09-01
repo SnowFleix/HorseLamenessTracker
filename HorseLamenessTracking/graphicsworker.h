@@ -4,12 +4,12 @@
 //STL Libraries
 #include <vector>
 
-// QT Libraries
+//QT Libraries
 #include <QObject>
 #include <QGraphicsView>
 #include <QImage>
 
-// Header files
+//Header files
 #include "utilfunctions.h"
 
 class GraphicsWorker : public QObject {
@@ -26,7 +26,7 @@ signals:
     void error(QString error);
 
 private:
-    std::vector<QGraphicsView*> _graphicsViewCol;
+    std::vector<QGraphicsView*> graphicsViewCol_;
 
     QImage matToImage(cv::Mat mat);
     QGraphicsScene* getSceneFromImage(QImage background);

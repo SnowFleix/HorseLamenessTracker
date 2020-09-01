@@ -1,10 +1,12 @@
 #ifndef CONFIGURATIONPAGE_H
 #define CONFIGURATIONPAGE_H
 
+//QT Libraries
 #include <QThread>
 #include <QWidget>
 #include <QCloseEvent>
 
+//Header Files
 #include "utilfunctions.h"
 #include "graphicsworker.h"
 

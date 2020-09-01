@@ -1,16 +1,16 @@
 #ifndef FILEHANDLER_H
 #define FILEHANDLER_H
 
-// QT libraries
+//QT libraries
 #include <QFile>
 #include <QObject>
 #include <QTextStream>
 #include <QFileDialog>
 
-// STL libraries
+//STL libraries
 #include <string>
 
-// Header files
+//Header files
 #include "utilfunctions.h"
 
 class FileHandler

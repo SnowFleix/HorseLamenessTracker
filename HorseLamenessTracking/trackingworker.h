@@ -3,8 +3,9 @@
 
 // QT Libraries
 #include <QObject>
+#include<QDebug>
 
-//
+// Header files
 #include "marker.h"
 
 class TrackingWorker : public QObject {

@@ -1,8 +1,13 @@
 #ifndef DEFINITIONS_H
 #define DEFINITIONS_H
 
+//QT Libraries
 #include <qimage.h>
+
+//STL Libararies
 #include <vector>
+
+//OpenCV Libraries
 #include <opencv2/opencv.hpp>
 
 // global variables used to change the HSV filers

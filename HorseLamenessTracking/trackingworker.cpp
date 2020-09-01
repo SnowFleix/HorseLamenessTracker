@@ -140,5 +140,5 @@ void TrackingWorker::finished() {
 /// \param error
 ///
 void TrackingWorker::error(QString error) {
-
+    qDebug(error);
 }
